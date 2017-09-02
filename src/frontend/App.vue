@@ -25,3 +25,11 @@
         > .container
             min-height: 0 !important
 </style>
+
+<script>
+    export default {
+      metaInfo: {
+        title: 'SITCON x HK 2017 Booth Game',
+      },
+    };
+</script>
