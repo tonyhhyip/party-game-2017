@@ -1,7 +1,5 @@
+const Query = require('./query');
+
 module.exports = {
-  Query: {
-    ping() {
-      return 'pong';
-    },
-  },
+  Query,
 };

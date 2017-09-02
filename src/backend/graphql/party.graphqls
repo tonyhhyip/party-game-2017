@@ -2,6 +2,13 @@ schema {
     query: Query
 }
 
+type Attendee {
+    id: String!
+    checkIn: String
+    finishGame: Boolean!
+}
+
 type Query {
     ping: String!
+    attendees: [Attendee!]
 }
