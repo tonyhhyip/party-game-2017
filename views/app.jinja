@@ -1,0 +1,15 @@
+<!doctype html>
+<html data-vue-meta-server-rendered {{- htmlAttrs -}}><head>
+    {{- meta | safe -}}
+    {{- title | safe -}}
+    {{- link | safe -}}
+    {%- for link in links -%}
+        <link href="{{- link -}}" rel="stylesheet" type="text/css">
+    {%- endfor  -%}
+</head><body>
+{{- html | safe -}}
+<script defer>window.__INITIAL_STATE__={{-  state | safe -}}</script>
+{%- for script in scripts  -%}
+    <script defer src="{{- script -}}"></script>
+{%- endfor -%}
+</body></html>
