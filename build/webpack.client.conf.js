@@ -19,13 +19,6 @@ module.exports = merge.smart(base, {
           },
         ],
       },
-      {
-        test: /\.graphql$/,
-        exclude: /node_modules/,
-        use: [
-          { loader: 'graphql-tag/loader' },
-        ],
-      },
     ],
   },
 });

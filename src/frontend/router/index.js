@@ -10,6 +10,7 @@ export default function () {
     mode: 'history',
     routes: [
       { path: '/', component: () => import('../pages/Home.vue') },
+      { path: '/admin/attendees', component: () => import('../pages/admin/attendees/list/Page.vue') },
     ],
   });
 }

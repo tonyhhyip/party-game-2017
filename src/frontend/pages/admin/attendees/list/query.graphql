@@ -1,0 +1,8 @@
+query ListAttendee {
+    attendees {
+        id
+        name
+        finishGame
+        checkIn
+    }
+}

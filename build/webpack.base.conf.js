@@ -25,6 +25,13 @@ module.exports = {
         loader: 'vue-loader',
         options: vueConf,
       },
+      {
+        test: /\.graphql$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'graphql-tag/loader' },
+        ],
+      },
     ],
   },
 };
