@@ -4,6 +4,7 @@ schema {
 
 type Attendee {
     id: String!
+    name: String!
     checkIn: String
     finishGame: Boolean!
 }
