@@ -7,9 +7,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./backend/template')(app);
+require('./template')(app);
 
-require('./backend/assets')(app)
-  .then(require('./backend/view'))
+require('./graphql')(app)
+  .then(require('./assets'))
+  .then(require('./view'))
   .then(() => app.listen(process.env.PORT || 8080))
   .catch(console.error);
