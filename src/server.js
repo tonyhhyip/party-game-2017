@@ -11,5 +11,5 @@ require('./backend/template')(app);
 
 require('./backend/assets')(app)
   .then(require('./backend/view'))
-  .then(() => app.listen(process.env.PORT))
+  .then(() => app.listen(process.env.PORT || 8080))
   .catch(console.error);
