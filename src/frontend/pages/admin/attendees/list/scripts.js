@@ -22,7 +22,7 @@ export default {
       const queryString = this.attendeeQuery.toLowerCase();
 
       return this.attendees.filter(
-        attendee => attendee.name.toLowerCase().indexOf(queryString) !== -1
+        attendee => attendee.name.toLowerCase().indexOf(queryString) !== -1,
       );
     },
     ...mapState({
