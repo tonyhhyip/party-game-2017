@@ -1,6 +1,13 @@
 <template>
-    <v-app>
-        <router-view></router-view>
+    <v-app toolbar>
+        <v-toolbar class="primary" dark>
+            <v-toolbar-title>SITCON x HK 2017 Booth Game</v-toolbar-title>
+        </v-toolbar>
+        <main>
+            <v-container fluid>
+                <router-view></router-view>
+            </v-container>
+        </main>
     </v-app>
 </template>
 
