@@ -37,6 +37,12 @@
     export default {
       metaInfo: {
         title: 'SITCON x HK 2017 Booth Game',
+        meta: [
+          { charset: 'utf-8' },
+        ],
+        link: [
+          { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+        ],
       },
     };
 </script>
