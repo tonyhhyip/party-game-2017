@@ -1,7 +1,7 @@
 import createApp from './app';
 
 export default context => new Promise((resolve, reject) => {
-  const { app, router, store } = createApp();
+  const { app, router, store } = createApp(true);
 
   context.meta = app.$meta();
 
