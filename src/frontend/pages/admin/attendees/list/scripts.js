@@ -7,10 +7,12 @@ export default {
   components: {
     List,
     Search,
+    Scanner: () => import('../../../../components/scanner/Component.vue'),
   },
   data() {
     return {
       attendees: null,
+      id: '',
     };
   },
   computed: {
@@ -32,6 +34,19 @@ export default {
   apollo: {
     attendees: {
       query,
+    },
+  },
+  methods: {
+    handleSubmit() {
+      this.handleCapture(this.id.substr(0, 9));
+    },
+    handleCapture(id) {
+      this.$router.push({
+        name: 'admin.attendees.show',
+        params: {
+          id,
+        },
+      });
     },
   },
 };

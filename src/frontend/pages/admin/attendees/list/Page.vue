@@ -2,6 +2,18 @@
   <v-layout column>
     <v-layout row>
       <v-flex xs12>
+        <scanner @capture="handleCapture"></scanner>
+      </v-flex>
+    </v-layout>
+    <form @submit="handleSubmit">
+      <v-layout row>
+        <v-flex xs12>
+          <v-text-field v-model="id" label="Order ID"></v-text-field>
+        </v-flex>
+      </v-layout>
+    </form>
+    <v-layout row>
+      <v-flex xs12>
         <search></search>
       </v-flex>
     </v-layout>
