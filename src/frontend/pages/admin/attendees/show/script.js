@@ -1,9 +1,13 @@
 import { mapState } from 'vuex';
+import List from './List.vue';
 import query from './query.graphql';
-import mutation from './checkIn.mutation.graphql';
+import checkInMutation from './checkIn.mutation.graphql';
 import time from '../../../../helpers/filters/time';
 
 export default {
+  components: {
+    List,
+  },
   data() {
     return {
       attendees: null,
@@ -23,6 +27,11 @@ export default {
     attendee() {
       return this.attendees !== null ? this.attendees[0] : null;
     },
+    allowFinishGame() {
+      return this.attendee &&
+        !this.attendee.finishGame &&
+        this.attendee.records.every(record => record.createTime !== null);
+    },
     ...mapState({
       id: state => state.route.params.id,
     }),
@@ -33,7 +42,7 @@ export default {
   methods: {
     checkIn() {
       this.$apollo.mutate({
-        mutation,
+        mutation: checkInMutation,
         variables: {
           attendee: { id: this.id },
         },
