@@ -8,14 +8,14 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>{{ attendee.name }}</v-list-tile-title>
-        <v-list-tile-sub-title>{{ attendee.checkIn | checkInStatus }}</v-list-tile-sub-title>
+        <v-list-tile-sub-title>{{ attendee.checkIn | time }}</v-list-tile-sub-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
 </template>
 
 <script>
-  import checkInStatus from '../../../../helpers/filters/checkInStatus';
+  import time from '../../../../helpers/filters/time';
 
   export default {
     props: {
@@ -25,7 +25,7 @@
       },
     },
     filters: {
-      checkInStatus,
+      time,
     },
   };
 </script>

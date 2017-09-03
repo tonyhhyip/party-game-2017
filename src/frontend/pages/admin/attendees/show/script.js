@@ -1,6 +1,6 @@
 import { mapState } from 'vuex';
 import query from './query.graphql';
-import checkInStatus from '../../../../helpers/filters/checkInStatus';
+import time from '../../../../helpers/filters/time';
 
 export default {
   data() {
@@ -25,6 +25,6 @@ export default {
     }),
   },
   filters: {
-    checkInStatus,
+    time,
   },
 };

@@ -11,7 +11,7 @@
           <v-card-title primary-title>
             <div>
               <h3 class="headline">{{ attendee.name }}</h3>
-              <div>Check In: {{ attendee.checkIn | checkInStatus }}</div>
+              <div>Check In: {{ attendee.checkIn | time }}</div>
             </div>
           </v-card-title>
         </v-card>
