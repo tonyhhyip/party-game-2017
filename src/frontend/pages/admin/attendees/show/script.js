@@ -29,6 +29,7 @@ export default {
     },
     allowFinishGame() {
       return this.attendee &&
+        (this.attendee.checkIn !== null) &&
         !this.attendee.finishGame &&
         this.attendee.records.every(record => record.createTime !== null);
     },
