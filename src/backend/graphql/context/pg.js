@@ -1,3 +1,5 @@
 const pgp = require('pg-promise')();
 
-module.exports = () => pgp(process.env.DB_URL);
+const pool = pgp(process.env.DB_URL);
+
+module.exports = () => pool;
