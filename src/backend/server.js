@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./template')(app);
 
-require('./graphql')(app)
+require('./static')(app)
+  .then(require('./graphql'))
   .then(require('./assets'))
   .then(require('./view'))
-  .then(() => app.listen(process.env.PORT || 8080))
   .catch(console.error);
+
+app.listen(process.env.PORT || 8080);
