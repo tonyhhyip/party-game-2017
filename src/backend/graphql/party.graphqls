@@ -27,7 +27,7 @@ type Record {
 type Query {
     ping: String!
     attendees(id: String): [Attendee!]
-    booths: [Booth!]
+    booths(token: String): [Booth!]
 }
 
 input AttendeeIDInput {
