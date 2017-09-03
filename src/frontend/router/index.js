@@ -11,6 +11,7 @@ export default function () {
     routes: [
       { path: '/', component: () => import('../pages/Home.vue') },
       { path: '/admin/attendees', component: () => import('../pages/admin/attendees/list/Page.vue') },
+      { path: '/admin/booth', component: () => import('../pages/admin/booth/list/Page.vue') },
     ],
   });
 }
