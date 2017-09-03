@@ -6,8 +6,7 @@ export default {
   data() {
     return {
       capture: false,
-      timeout: null,
-      stream: null,
+      scanner: null,
       value: 'No Data',
     };
   },
@@ -27,6 +26,8 @@ export default {
       console.log(result);
       this.value = result;
       this.$emit('capture', result.substr(0, 9));
+      this.stopCapture();
+      this.capture = false;
     },
     toggleCapture() {
       if (this.capture) {
@@ -38,51 +39,20 @@ export default {
       }
     },
     stopCapture() {
-      if (this.stream !== null) {
-        this.stream.getVideoTracks().forEach(track => track.stop());
-      }
-
-      if (this.timeout !== null) {
-        clearTimeout(this.timeout);
+      if (navigator.mediaDevices) {
+        this.scanner.setStopped(true);
+        this.scanner.dispose();
       }
     },
     startCapture() {
-      const video = this.$refs.video;
-      const canvas = this.$refs.canvas;
-      const context = canvas.getContext('2d');
-      const qrcode = new QRCode();
-
-      const successCallback = (stream) => {
-        video.src = window.URL.createObjectURL(stream) || stream;
-        const scan = () => {
-          if (stream) {
-            context.drawImage(video, 0, 0, 307, 250);
-            const data = context.getImageData(0, 0, 498, 375);
-            try {
-              qrcode.decode(data);
-            } catch (e) {
-              console.error(e);
-            }
-            this.timeout = setTimeout(scan, 100);
-          } else {
-            this.timeout = setTimeout(scan, 100);
-          }
-        };
-        this.stream = stream;
-        this.timeout = setTimeout(scan, 500);
-        video.play();
-      };
-
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(successCallback)
-        .catch(console.trace);
-
-      qrcode.callback = (e, result) => {
-        if (!e && result) {
-          console.log(result);
-          this.handleCapture(result);
-        }
-      };
+      window.w69b.qr.decoding.setWorkerUrl('/w69b.qrcode.decodeworker.min.js');
+      if (navigator.mediaDevices && !window.navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        this.scanner = new window.w69b.qr.ui.ContinuousScanner()
+        this.scanner.setDecodedCallback((result) => this.handleCapture({ result }));
+        this.scanner.render(this.$refs.capture);
+      } else {
+        console.log('Sorry, native web camera streaming (getUserMedia) is not supported by this browser...');
+      }
     },
   },
 };

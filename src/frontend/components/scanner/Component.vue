@@ -2,8 +2,7 @@
   <v-layout column>
     <v-layout row>
       <v-flex xs12 class="qrcode-reader">
-        <video :width="videoWidth" ref="video"></video>
-        <canvas width="498px" height="375px" style="display: none" ref="canvas"></canvas>
+        <div ref="capture"></div>
       </v-flex>
     </v-layout>
     <v-layout>
