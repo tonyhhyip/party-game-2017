@@ -14,6 +14,7 @@ export default {
       booths: null,
       id: '',
       snackbar: false,
+      notice: '',
     };
   },
   computed: {
@@ -50,7 +51,14 @@ export default {
           booth: { id: this.booth.id },
         },
       })
-        .then(() => { this.snackbar = true; });
+        .then(() => {
+          this.notice = 'Done';
+          this.snackbar = true;
+        })
+        .catch((e) => {
+          this.notice = e.message.replace('GraphQL error: ', '');
+          this.snackbar = true;
+        });
     },
   },
   apollo: {

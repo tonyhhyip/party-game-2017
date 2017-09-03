@@ -15,7 +15,7 @@
         </v-layout>
       </form>
       <v-snackbar v-model="snackbar" top :timeout="5000">
-        Done
+        {{ notice }}
         <v-btn @click="snackbar = false" flat class="pink--text">Close</v-btn>
       </v-snackbar>
     </template>
