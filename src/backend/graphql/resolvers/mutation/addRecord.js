@@ -5,15 +5,15 @@ module.exports = (obj, { attendee, booth }, context) => {
   RETURNING create_time
   `;
   const selectQuery = `
-  SELECT 1 FROM attendees WHERE id = $1 AND checkIn IS NOT NULL
+  SELECT 1 FROM attendees WHERE id = $1 AND check_in IS NOT NULL
   `;
-  return context.db.tx(t => t.result(selectQuery, [attendee.id])
+  return context.db.task(t => t.tx(x => x.result(selectQuery, [attendee.id])
     .then((result) => {
       if (result.rowCount === 0) {
         throw new Error('Require Check In');
       }
     })
-    .then(() => t.one(insertQuery, [attendee.id, booth.id])))
+    .then(() => x.one(insertQuery, [attendee.id, booth.id]))))
     .then(data => ({
       createTime: data.create_time,
       attendee: { id: attendee.id },
