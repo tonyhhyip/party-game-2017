@@ -41,4 +41,5 @@ input BoothIDInput {
 type Mutation {
     checkInAttendee(attendee: AttendeeIDInput!): Attendee!
     addRecord(attendee: AttendeeIDInput!, booth: BoothIDInput!): Record
+    finishGame(attendee: AttendeeIDInput!): Attendee!
 }
