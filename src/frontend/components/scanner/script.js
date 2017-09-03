@@ -1,5 +1,3 @@
-import QRCode from 'qrcode-reader';
-
 /* globals window, navigator */
 
 export default {
@@ -47,9 +45,10 @@ export default {
     startCapture() {
       window.w69b.qr.decoding.setWorkerUrl('/w69b.qrcode.decodeworker.min.js');
       if (navigator.mediaDevices && !window.navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-        this.scanner = new window.w69b.qr.ui.ContinuousScanner()
+        this.scanner = new window.w69b.qr.ui.ContinuousScanner();
         this.scanner.setDecodedCallback((result) => this.handleCapture({ result }));
         this.scanner.render(this.$refs.capture);
+        console.log(this.scanner);
       } else {
         console.log('Sorry, native web camera streaming (getUserMedia) is not supported by this browser...');
       }

@@ -18,5 +18,5 @@
   </v-layout>
 </template>
 
-<style src="./style.styl" lang="stylus" scoped></style>
+<style src="./style.styl" lang="stylus"></style>
 <script src="./script.js"></script>
