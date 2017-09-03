@@ -6,17 +6,14 @@ module.exports = {
     WHERE records.attendee IS NULL OR records.attendee = $1  
   `;
     return context.db.any(sql, [obj.id])
-      .then((rows) => {
-        console.log(rows);
-        return rows.map(row => ({
-          createTime: row.create_time,
-          booth: {
-            id: row.id,
-            name: row.name,
-            token: row.token,
-          },
-          attendee: obj,
-        }));
-      });
-  }
+      .then(rows => rows.map(row => ({
+        createTime: row.create_time,
+        booth: {
+          id: row.id,
+          name: row.name,
+          token: row.token,
+        },
+        attendee: obj,
+      })));
+  },
 };
