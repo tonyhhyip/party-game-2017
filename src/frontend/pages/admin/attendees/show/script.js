@@ -21,6 +21,7 @@ export default {
       variables() {
         return { id: this.id };
       },
+      fetchPolicy: 'cache-and-network',
     },
   },
   computed: {

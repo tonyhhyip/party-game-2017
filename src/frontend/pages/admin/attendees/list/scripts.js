@@ -34,6 +34,7 @@ export default {
   apollo: {
     attendees: {
       query,
+      fetchPolicy: 'cache-and-network',
     },
   },
   methods: {
