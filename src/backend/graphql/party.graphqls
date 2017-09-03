@@ -8,12 +8,20 @@ type Attendee {
     name: String!
     checkIn: String
     finishGame: Boolean!
+    records: [Record!]
 }
 
 type Booth {
     id: String!
     name: String!
     token: String!
+}
+
+
+type Record {
+    attendee: Attendee
+    booth: Booth
+    createTime: String
 }
 
 type Query {
