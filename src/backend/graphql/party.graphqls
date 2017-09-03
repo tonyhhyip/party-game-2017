@@ -9,7 +9,14 @@ type Attendee {
     finishGame: Boolean!
 }
 
+type Booth {
+    id: String!
+    name: String!
+    token: String!
+}
+
 type Query {
     ping: String!
     attendees: [Attendee!]
+    booths: [Booth!]
 }
