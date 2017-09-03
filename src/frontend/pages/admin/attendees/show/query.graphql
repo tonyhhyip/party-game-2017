@@ -1,0 +1,8 @@
+query GetAttendee($id: String) {
+    attendees(id: $id) {
+        id
+        name
+        checkIn
+        finishGame
+    }
+}

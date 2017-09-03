@@ -1,7 +1,7 @@
 <template>
   <v-list two-line subheader>
     <v-subheader>Attendee</v-subheader>
-    <v-list-tile v-for="attendee in attendees" :key="attendee.id">
+    <v-list-tile v-for="attendee in attendees" :key="attendee.id" :to="{ name: 'admin.attendees.show', params: { id: attendee.id } }">
       <v-list-tile-action>
         <v-icon class="green--text" v-if="attendee.finishGame">done</v-icon>
         <v-icon class="red--text" v-else>close</v-icon>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+  import checkInStatus from '../../../../helpers/filters/checkInStatus';
+
   export default {
     props: {
       attendees: {
@@ -23,13 +25,7 @@
       },
     },
     filters: {
-      checkInStatus(val) {
-        if (val === null) {
-          return 'Not yet check in';
-        }
-
-        return val;
-      },
+      checkInStatus,
     },
   };
 </script>
