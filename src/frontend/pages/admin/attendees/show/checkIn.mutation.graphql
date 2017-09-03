@@ -1,0 +1,5 @@
+mutation ($attendee: AttendeeIDInput!) {
+    checkInAttendee(attendee: $attendee) {
+        checkIn
+    }
+}
