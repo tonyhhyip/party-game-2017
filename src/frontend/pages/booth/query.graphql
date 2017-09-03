@@ -1,0 +1,6 @@
+query GetBoothData($token: String) {
+    booths(token: $token) {
+        id
+        name
+    }
+}

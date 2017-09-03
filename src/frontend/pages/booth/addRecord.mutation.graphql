@@ -1,0 +1,5 @@
+mutation ($attendee: AttendeeIDInput!, $booth: BoothIDInput!) {
+    addRecord(attendee: $attendee, booth: $booth) {
+        createTime
+    }
+}
