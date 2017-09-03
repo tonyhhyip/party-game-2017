@@ -7,7 +7,7 @@
         </v-flex>
       </v-layout>
       <scanner @capture="handleCapture"></scanner>
-      <form @submit="handleSubmit">
+      <form @submit.prevent="handleSubmit">
         <v-layout row>
           <v-flex xs12>
             <v-text-field v-model="id" label="Order ID"></v-text-field>
