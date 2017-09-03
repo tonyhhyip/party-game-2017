@@ -20,7 +20,7 @@
 
             <v-card-actions>
               <v-btn flat @click="checkIn" :disabled="attendee.checkIn !== null">Check In</v-btn>
-              <v-btn flat @click="" :disabled="!allowFinishGame">Finish Game</v-btn>
+              <v-btn flat @click="finishGame" :disabled="!allowFinishGame">Finish Game</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>

@@ -1,0 +1,5 @@
+mutation FinishGame($attendee: AttendeeIDInput!) {
+    finishGame(attendee: $attendee) {
+        finishGame
+    }
+}

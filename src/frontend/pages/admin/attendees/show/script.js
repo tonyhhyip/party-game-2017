@@ -2,6 +2,7 @@ import { mapState } from 'vuex';
 import List from './List.vue';
 import query from './query.graphql';
 import checkInMutation from './checkIn.mutation.graphql';
+import finishGameMutation from './finishGame.mutation.graphql';
 import time from '../../../../helpers/filters/time';
 
 export default {
@@ -42,17 +43,37 @@ export default {
     time,
   },
   methods: {
+    finishGame() {
+      this.$apollo.mutate({
+        mutation: finishGameMutation,
+        variables: {
+          attendee: {
+            id: this.id,
+          },
+        },
+        update: (store, { data: { finishGame } }) => {
+          const variables = { id: this.id };
+          const data = store.readQuery({ query, variables });
+          data.attendees[0].checkIn = finishGame.finishGame;
+          store.writeQuery({ query, variables, data });
+        },
+      })
+        .then(() => {
+          this.notice = 'End Game';
+          this.snackbar = true;
+        });
+    },
     checkIn() {
       this.$apollo.mutate({
         mutation: checkInMutation,
         variables: {
           attendee: { id: this.id },
         },
-        update: (store, { data }) => {
+        update: (store, { data: { checkInAttendee } }) => {
           const variables = { id: this.id };
-          const content = store.readQuery({ query, variables });
-          content.attendees[0].checkIn = data.checkInAttendee.checkIn;
-          store.writeQuery({ query, variables, data: content });
+          const data = store.readQuery({ query, variables });
+          data.attendees[0].checkIn = checkInAttendee.checkIn;
+          store.writeQuery({ query, variables, data });
         },
       })
         .then(() => {
