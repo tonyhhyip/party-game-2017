@@ -1,6 +1,6 @@
-module.exports = (root, args, context) => {
-  const query = 'SELECT id, checkIn, finishGame, name FROM attendees';
-  return context.db.any(query)
+module.exports = (root, { id }, context) => {
+  const query = `SELECT id, checkIn, finishGame, name FROM attendees${id ? ' WHERE id = $1' : ''}`;
+  return context.db.any(query, id ? [id] : [])
     .then(rows => rows.map(row => ({
       id: row.id,
       finishGame: row.finishgame,

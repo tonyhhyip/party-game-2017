@@ -17,6 +17,6 @@ type Booth {
 
 type Query {
     ping: String!
-    attendees: [Attendee!]
+    attendees(id: String): [Attendee!]
     booths: [Booth!]
 }
