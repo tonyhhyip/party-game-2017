@@ -1,0 +1,7 @@
+query Booth($id: String) {
+    booths(id: $id) {
+        id
+        name
+        token
+    }
+}

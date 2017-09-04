@@ -1,4 +1,14 @@
-module.exports = (root, { token }, context) => {
-  const sql = `SELECT id, name, token FROM booth${token ? ' WHERE token = $1' : ''}`;
-  return context.db.any(sql, token ? [token] : []);
+function createQuery({ token, id }) {
+  if (id) {
+    return ['SELECT id, name, token FROM booth WHERE id = $1', [id]];
+  } else if (token) {
+    return ['SELECT id, name, token FROM booth WHERE token = $1', [token]];
+  }
+
+  return ['SELECT id, name, token FROM booth'];
+}
+
+module.exports = (root, args, context) => {
+  const sql = createQuery(args);
+  return context.db.task(t => t.any(...sql));
 };
