@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-breadcrumbs divider="/">
-      <v-breadcrumbs-item href="/admin">Admin</v-breadcrumbs-item>
+      <v-breadcrumbs-item>Admin</v-breadcrumbs-item>
     </v-breadcrumbs>
     <v-list>
       <v-list-tile avatar to="/admin/attendees">
@@ -17,7 +17,7 @@
           <v-icon class="grey lighten-2">business</v-icon>
         </v-list-tile-avatar>
         <v-list-title-content>
-          Business
+          Booth
         </v-list-title-content>
       </v-list-tile>
     </v-list>

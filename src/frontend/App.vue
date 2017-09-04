@@ -31,6 +31,8 @@
         background-color white
         > .container
             min-height: 0 !important
+    .breadcrumbs-link
+        cursor pointer
 </style>
 
 <script>

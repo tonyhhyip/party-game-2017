@@ -1,8 +1,8 @@
 <template>
   <v-layout column>
     <v-breadcrumbs divider="/">
-      <v-breadcrumbs-item href="/admin">Admin</v-breadcrumbs-item>
-      <v-breadcrumbs-item href="/admin/booth">Booth</v-breadcrumbs-item>
+      <v-breadcrumbs-item to="/admin" activeClass="breadcrumbs-link">Admin</v-breadcrumbs-item>
+      <v-breadcrumbs-item to="/admin/booth" activeClass="breadcrumbs-link">Booth</v-breadcrumbs-item>
     </v-breadcrumbs>
     <v-layout row>
       <v-flex xs12>
