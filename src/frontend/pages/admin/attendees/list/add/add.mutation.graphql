@@ -1,0 +1,8 @@
+mutation AddAttendee($attendee: AddAttendeeInput!) {
+    addAttendee(attendee: $attendee) {
+        id
+        name
+        finishGame
+        checkIn
+    }
+}

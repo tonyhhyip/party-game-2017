@@ -2,9 +2,11 @@ import { mapState } from 'vuex';
 import query from './query.graphql';
 import List from './List.vue';
 import Search from './Search.vue';
+import Add from './add/Component.vue';
 
 export default {
   components: {
+    Add,
     List,
     Search,
     Scanner: () => import('../../../../components/scanner/Component.vue'),
