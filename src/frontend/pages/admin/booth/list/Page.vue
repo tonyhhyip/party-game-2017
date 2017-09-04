@@ -1,5 +1,9 @@
 <template>
   <v-layout column>
+    <v-breadcrumbs divider="/">
+      <v-breadcrumbs-item href="/admin">Admin</v-breadcrumbs-item>
+      <v-breadcrumbs-item href="/admin/booth">Booth</v-breadcrumbs-item>
+    </v-breadcrumbs>
     <v-layout row>
       <v-flex xs12>
         <list v-if="booths != null" :booths="booths"></list>

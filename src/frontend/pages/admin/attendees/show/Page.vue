@@ -1,12 +1,10 @@
 <template>
   <v-layout column>
-
-    <v-layout row>
-      <v-flex xs12>
-        <v-btn primary to="/admin/attendees">Back</v-btn>
-      </v-flex>
-    </v-layout>
-
+    <v-breadcrumbs divider="/">
+      <v-breadcrumbs-item href="/admin">Admin</v-breadcrumbs-item>
+      <v-breadcrumbs-item href="/admin/attendees">Attendees</v-breadcrumbs-item>
+      <v-breadcrumbs-item disabled>Info</v-breadcrumbs-item>
+    </v-breadcrumbs>
     <template v-if="attendee != null">
       <v-layout row>
         <v-flex xs12>

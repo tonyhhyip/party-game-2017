@@ -1,10 +1,10 @@
 <template>
   <v-layout column>
-    <v-layout row>
-      <v-flex xs12>
-        <v-btn to="/admin/booth" primary>Back</v-btn>
-      </v-flex>
-    </v-layout>
+    <v-breadcrumbs divider="/">
+      <v-breadcrumbs-item href="/admin">Admin</v-breadcrumbs-item>
+      <v-breadcrumbs-item href="/admin/booth">Booth</v-breadcrumbs-item>
+      <v-breadcrumbs-item disabled>Info</v-breadcrumbs-item>
+    </v-breadcrumbs>
     <v-progress-linear indeterminate height="5" v-if="booth === null"></v-progress-linear>
     <template v-else>
       <v-layout row>
