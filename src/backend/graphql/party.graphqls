@@ -38,8 +38,14 @@ input BoothIDInput {
     id: String!
 }
 
+input AddAttendeeInput {
+    id: String!
+    name: String!
+}
+
 type Mutation {
     checkInAttendee(attendee: AttendeeIDInput!): Attendee!
     addRecord(attendee: AttendeeIDInput!, booth: BoothIDInput!): Record
     finishGame(attendee: AttendeeIDInput!): Attendee!
+    addAttendee(attendee: AddAttendeeInput!): Attendee!
 }
