@@ -1,10 +1,26 @@
-module.exports = (root, { id }, context) => {
-  const query = `SELECT id, check_in, finish_game, name FROM attendees${id ? ' WHERE id = $1' : ''}`;
-  return context.db.task(t => t.any(query, id ? [id] : []))
-    .then(rows => rows.map(row => ({
-      id: row.id,
-      finishGame: row.finish_game,
-      checkIn: row.check_in,
-      name: row.name,
-    })));
+function formatToOutput(rows) {
+  return rows.map(row => ({
+    id: row.id,
+    finishGame: row.finish_game,
+    checkIn: row.check_in,
+    name: row.name,
+    orderID: row.order_id,
+    ticket: row.ticket,
+  }));
+}
+
+function createQuery({ id, order }) {
+  if (id) {
+    return ['SELECT id, check_in, finish_game, name, order_id, ticket FROM attendees WHERE id = $1', [id]];
+  } else if (order) {
+    return ['SELECT id, check_in, finish_game, name, order_id, ticket FROM attendees WHERE order_id = $1', [order]];
+  }
+
+  return ['SELECT id, check_in, finish_game, name, order_id, ticket FROM attendees'];
+}
+
+module.exports = (root, args, context) => {
+  const query = createQuery(args);
+  return context.db.task(t => t.any.apply(t, query))
+    .then(formatToOutput);
 };

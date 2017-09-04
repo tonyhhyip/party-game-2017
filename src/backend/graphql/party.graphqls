@@ -5,6 +5,8 @@ schema {
 
 type Attendee {
     id: String!
+    orderID: String!
+    ticket: String!
     name: String!
     checkIn: String
     finishGame: Boolean!
@@ -26,7 +28,7 @@ type Record {
 
 type Query {
     ping: String!
-    attendees(id: String): [Attendee!]
+    attendees(id: String, order: String): [Attendee!]
     booths(token: String): [Booth!]
 }
 
@@ -41,6 +43,7 @@ input BoothIDInput {
 input AddAttendeeInput {
     id: String!
     name: String!
+    order: String!
 }
 
 type Mutation {
@@ -48,4 +51,5 @@ type Mutation {
     addRecord(attendee: AttendeeIDInput!, booth: BoothIDInput!): Record
     finishGame(attendee: AttendeeIDInput!): Attendee!
     addAttendee(attendee: AddAttendeeInput!): Attendee!
+    syncAttendee: [Attendee!]
 }
