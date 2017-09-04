@@ -84,7 +84,9 @@ module.exports = app => updateServerBundle()
             next(err);
           }
         } else {
-          const { title, link, meta, script } = context.meta.inject();
+          const {
+            title, link, meta, script,
+          } = context.meta.inject();
           res.render('app.jinja', {
             html,
             scripts,

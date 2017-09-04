@@ -10,6 +10,7 @@ export default context => new Promise((resolve, reject) => {
   router.onReady(() => {
     const matchedComponents = router.getMatchedComponents();
     if (!matchedComponents.length) {
+      // eslint-disable-next-line prefer-promise-reject-errors
       reject({ code: 404 });
     } else {
       Promise.all(matchedComponents.map((Component) => {

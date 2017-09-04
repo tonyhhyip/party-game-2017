@@ -21,6 +21,7 @@ function createQuery({ id, order }) {
 
 module.exports = (root, args, context) => {
   const query = createQuery(args);
+  // eslint-disable-next-line prefer-spread
   return context.db.task(t => t.any.apply(t, query))
     .then(formatToOutput);
 };

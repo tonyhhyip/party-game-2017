@@ -46,7 +46,7 @@ export default {
       window.w69b.qr.decoding.setWorkerUrl('/w69b.qrcode.decodeworker.min.js');
       if (navigator.mediaDevices && !window.navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
         this.scanner = new window.w69b.qr.ui.ContinuousScanner();
-        this.scanner.setDecodedCallback((result) => this.handleCapture({ result }));
+        this.scanner.setDecodedCallback(result => this.handleCapture({ result }));
         this.scanner.render(this.$refs.capture);
         console.log(this.scanner);
       } else {
