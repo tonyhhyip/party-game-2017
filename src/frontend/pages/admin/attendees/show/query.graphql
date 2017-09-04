@@ -4,6 +4,7 @@ query GetAttendee($id: String) {
         name
         checkIn
         finishGame
+        ticket
         records {
             createTime
             booth {
