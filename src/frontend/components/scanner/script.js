@@ -23,7 +23,7 @@ export default {
     handleCapture({ result }) {
       console.log(result);
       this.value = result;
-      this.$emit('capture', result.substr(0, 9));
+      this.$emit('capture', result.substr(9, 9));
       this.stopCapture();
       this.capture = false;
     },
