@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="dialog">
-    <v-btn primary dark fab fixed bottom right slot="activator">
+    <v-btn secondary dark fab slot="activator">
       <v-icon>add</v-icon>
     </v-btn>
     <v-card>
@@ -8,7 +8,8 @@
         <span class="headline">Add Attendee</span>
       </v-card-title>
       <v-card-text>
-        <v-text-field label="Order ID" v-model="id" required></v-text-field>
+        <v-text-field label="Ticket ID" v-model="id" required></v-text-field>
+        <v-text-field label="Order ID" v-model="order" required></v-text-field>
         <v-text-field label="Name" v-model="name" required></v-text-field>
       </v-card-text>
       <v-card-actions>

@@ -1,5 +1,6 @@
 import { mapState } from 'vuex';
 import query from './query.graphql';
+import mutation from './sync.mutation.graphql';
 import List from './List.vue';
 import Search from './Search.vue';
 import Add from './add/Component.vue';
@@ -15,6 +16,8 @@ export default {
     return {
       attendees: null,
       id: '',
+      fab: false,
+      syncing: false,
     };
   },
   computed: {
@@ -53,6 +56,18 @@ export default {
           id,
         },
       });
+    },
+    syncAttendee() {
+      this.syncing = true;
+      this.$apollo.mutate({
+        mutation,
+        update(store, { data: { syncAttendee } }) {
+          const data = store.readQuery({ query });
+          data.attendees = syncAttendee;
+          store.writeQuery({ query, data });
+        },
+      })
+        .then(() => { this.syncing = false; });
     },
   },
 };

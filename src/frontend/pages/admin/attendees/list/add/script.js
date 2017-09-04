@@ -7,6 +7,7 @@ export default {
       dialog: false,
       id: '',
       name: '',
+      order: '',
       loading: false,
     };
   },
@@ -18,6 +19,7 @@ export default {
           attendee: {
             id: this.id,
             name: this.name,
+            order: this.order,
           },
           update(store, { data: { addAttendee } }) {
             const data = store.readQuery({ query });
