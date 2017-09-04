@@ -1,6 +1,12 @@
 /* globals window, navigator */
 
 export default {
+  props: {
+    keepCapture: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       capture: false,
@@ -24,8 +30,10 @@ export default {
       console.log(result);
       this.value = result;
       this.$emit('capture', result.substr(9, 9));
-      this.stopCapture();
-      this.capture = false;
+      if (!this.keepCapture) {
+        this.stopCapture();
+        this.capture = false;
+      }
     },
     toggleCapture() {
       if (this.capture) {

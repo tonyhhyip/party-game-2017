@@ -15,6 +15,7 @@ export default {
       id: '',
       snackbar: false,
       notice: '',
+      success: true,
     };
   },
   computed: {
@@ -39,10 +40,6 @@ export default {
         sessionStorage.setItem('token', this.queryToken);
       }
     },
-    handleSubmit() {
-      this.handleCapture(this.id.substr(0, 9));
-      this.id = '';
-    },
     handleCapture(id) {
       this.$apollo.mutate({
         mutation,
@@ -54,10 +51,12 @@ export default {
         .then(() => {
           this.notice = 'Done';
           this.snackbar = true;
+          this.success = true;
         })
         .catch((e) => {
           this.notice = e.message.replace('GraphQL error: ', '');
           this.snackbar = true;
+          this.success = false;
         });
     },
   },
