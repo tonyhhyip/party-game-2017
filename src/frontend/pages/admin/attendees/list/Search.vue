@@ -1,14 +1,14 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <v-layout row>
-      <v-flex xs5>
+  <v-layout row>
+    <v-flex xs5>
+      <form @submit.prevent="submitForm">
         <v-text-field v-model="id" label="Order ID"></v-text-field>
-      </v-flex>
-      <v-flex xs5 offset-xs1>
-        <v-text-field label="Name" v-model="query"></v-text-field>
-      </v-flex>
-    </v-layout>
-  </form>
+      </form>
+    </v-flex>
+    <v-flex xs5 offset-xs1>
+      <v-text-field label="Name" v-model="query"></v-text-field>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -20,6 +20,11 @@
         type: Function,
         required: true,
       },
+    },
+    data() {
+      return {
+        id: '',
+      };
     },
     computed: {
       query: {
@@ -35,6 +40,10 @@
       }),
     },
     methods: {
+      submitForm() {
+        console.log('Submit');
+        this.handleSubmit(this.id);
+      },
       ...mapActions({
         updateAttendeeQuery: 'search/updateAttendeeQuery',
       }),

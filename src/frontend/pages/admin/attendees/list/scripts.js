@@ -40,8 +40,8 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
-      this.handleCapture(this.id.substr(0, 9));
+    handleSubmit(id) {
+      this.handleCapture(id.substr(0, 9));
     },
     handleCapture(id) {
       this.$router.push({
