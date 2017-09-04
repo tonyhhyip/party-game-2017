@@ -4,5 +4,6 @@ query ListAttendee {
         name
         finishGame
         checkIn
+        orderID
     }
 }

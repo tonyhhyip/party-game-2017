@@ -1,16 +1,23 @@
 export default {
   namespaced: true,
   state: {
-    attendees: '',
+    attendeesName: '',
+    attendeesOrder: '',
   },
   mutations: {
-    updateAttendee(state, val) {
-      state.attendees = val;
+    updateAttendeeName(state, val) {
+      state.attendeesName = val;
+    },
+    updateAttendeesOrder(state, val) {
+      state.attendeesOrder = val;
     },
   },
   actions: {
-    updateAttendeeQuery({ commit }, query) {
-      commit('updateAttendee', query);
+    updateAttendeeNameQuery({ commit }, query) {
+      commit('updateAttendeeName', query);
+    },
+    updateAttendeesOrder({ commit }, query) {
+      commit('updateAttendeesOrder', query);
     },
   },
 };

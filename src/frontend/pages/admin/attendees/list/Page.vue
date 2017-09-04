@@ -5,7 +5,7 @@
         <scanner @capture="handleCapture"></scanner>
       </v-flex>
     </v-layout>
-    <search :handleSubmit="handleSubmit"></search>
+    <search></search>
     <v-layout row>
       <v-flex xs12>
         <list v-if="attendees !== null" :attendees="filterAttendees"></list>

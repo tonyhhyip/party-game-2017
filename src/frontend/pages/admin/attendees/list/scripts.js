@@ -19,18 +19,24 @@ export default {
   },
   computed: {
     filterAttendees() {
-      if (this.attendeeQuery.length === 0) {
-        return this.attendees;
+      let { attendees } = this;
+
+      if (this.nameQuery.trim().length > 0) {
+        const queryString = this.nameQuery.toLowerCase().trim();
+        attendees = attendees
+          .filter(attendee => attendee.name.toLowerCase().indexOf(queryString) !== -1);
       }
 
-      const queryString = this.attendeeQuery.toLowerCase();
+      if (this.orderQuery.trim().length > 0) {
+        attendees = attendees
+          .filter(attendee => attendee.orderID.indexOf(this.orderQuery.trim()) !== -1);
+      }
 
-      return this.attendees.filter(
-        attendee => attendee.name.toLowerCase().indexOf(queryString) !== -1,
-      );
+      return attendees;
     },
     ...mapState({
-      attendeeQuery: state => state.search.attendees,
+      nameQuery: state => state.search.attendeesName,
+      orderQuery: state => state.search.attendeesOrder,
     }),
   },
   apollo: {
@@ -40,9 +46,6 @@ export default {
     },
   },
   methods: {
-    handleSubmit(id) {
-      this.handleCapture(id.substr(0, 9));
-    },
     handleCapture(id) {
       this.$router.push({
         name: 'admin.attendees.show',

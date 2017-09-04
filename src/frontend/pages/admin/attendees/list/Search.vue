@@ -1,9 +1,7 @@
 <template>
   <v-layout row>
     <v-flex xs5>
-      <form @submit.prevent="submitForm">
-        <v-text-field v-model="id" label="Order ID"></v-text-field>
-      </form>
+      <v-text-field v-model="id" label="Order ID"></v-text-field>
     </v-flex>
     <v-flex xs5 offset-xs1>
       <v-text-field label="Name" v-model="query"></v-text-field>
@@ -15,36 +13,32 @@
   import { mapActions, mapState } from 'vuex';
 
   export default {
-    props: {
-      handleSubmit: {
-        type: Function,
-        required: true,
-      },
-    },
-    data() {
-      return {
-        id: '',
-      };
-    },
     computed: {
       query: {
         get() {
-          return this.attendeeQuery;
+          return this.nameQuery;
         },
         set(val) {
-          this.updateAttendeeQuery(val);
+          this.updateAttendeeNameQuery(val);
+        },
+      },
+      id: {
+        get() {
+          return this.orderQuery;
+        },
+        set(val) {
+          this.updateAttendeesOrder(val);
         },
       },
       ...mapState({
-        attendeeQuery: state => state.search.attendees,
+        nameQuery: state => state.search.attendeesName,
+        orderQuery: state => state.search.attendeesOrder,
       }),
     },
     methods: {
-      submitForm() {
-        this.handleSubmit(this.id);
-      },
       ...mapActions({
-        updateAttendeeQuery: 'search/updateAttendeeQuery',
+        updateAttendeeNameQuery: 'search/updateAttendeeNameQuery',
+        updateAttendeesOrder: 'search/updateAttendeesOrder',
       }),
     },
   };
