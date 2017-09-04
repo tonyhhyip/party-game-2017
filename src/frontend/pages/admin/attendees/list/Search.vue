@@ -41,7 +41,6 @@
     },
     methods: {
       submitForm() {
-        console.log('Submit');
         this.handleSubmit(this.id);
       },
       ...mapActions({
