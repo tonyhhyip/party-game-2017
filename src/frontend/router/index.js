@@ -13,6 +13,7 @@ export default function () {
       { path: '/admin/attendees', component: () => import('../pages/admin/attendees/list/Page.vue') },
       { path: '/admin/attendees/:id', name: 'admin.attendees.show', component: () => import('../pages/admin/attendees/show/Page.vue') },
       { path: '/admin/booth', component: () => import('../pages/admin/booth/list/Page.vue') },
+      { path: '/admin/booth/add', component: () => import('../pages/admin/booth/add/Page.vue') },
       { path: '/admin/booth/:id', name: 'admin.booth.show', component: () => import('../pages/admin/booth/show/Page.vue') },
       { path: '/booth', component: () => import('../pages/booth/Page.vue') },
     ],

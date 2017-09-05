@@ -40,6 +40,11 @@ input BoothIDInput {
     id: String!
 }
 
+input AddBoothInput {
+    name: String!
+    token: String!
+}
+
 input AddAttendeeInput {
     id: String!
     name: String!
@@ -52,4 +57,5 @@ type Mutation {
     finishGame(attendee: AttendeeIDInput!): Attendee!
     addAttendee(attendee: AddAttendeeInput!): Attendee!
     syncAttendee: [Attendee!]
+    addBooth(booth: AddBoothInput!): Booth
 }

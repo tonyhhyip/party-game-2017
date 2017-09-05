@@ -10,6 +10,9 @@
         <v-progress-linear indeterminate height="5" v-else></v-progress-linear>
       </v-flex>
     </v-layout>
+    <v-btn fab to="/admin/booth/add" bottom right fixed primary dark>
+      <v-icon>add</v-icon>
+    </v-btn>
   </v-layout>
 </template>
 

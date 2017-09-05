@@ -3,6 +3,7 @@ const addRecord = require('./addRecord');
 const finishGame = require('./finishGame');
 const addAttendee = require('./addAttendee');
 const syncAttendee = require('./syncAttendee');
+const addBooth = require('./addBooth');
 
 module.exports = {
   checkInAttendee,
@@ -10,4 +11,5 @@ module.exports = {
   finishGame,
   addAttendee,
   syncAttendee,
+  addBooth,
 };

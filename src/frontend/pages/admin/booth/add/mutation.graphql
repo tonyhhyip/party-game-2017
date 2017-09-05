@@ -1,0 +1,5 @@
+mutation ($booth: AddBoothInput!) {
+    addBooth(booth: $booth) {
+        __typename
+    }
+}
