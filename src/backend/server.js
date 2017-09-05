@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('./template')(app);
 
 require('./static')(app)
+  .then(require('./webhook'))
   .then(require('./graphql'))
   .then(require('./assets'))
   .then(require('./view'))
