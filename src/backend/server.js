@@ -13,6 +13,7 @@ require('./template')(app);
 
 require('./static')(app)
   .then(require('./webhook'))
+  .then(require('./oauth'))
   .then(require('./graphql'))
   .then(require('./assets'))
   .then(require('./view'))
