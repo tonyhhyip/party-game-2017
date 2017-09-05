@@ -45,7 +45,7 @@ export default {
       }
     },
     stopCapture() {
-      if (navigator.mediaDevices) {
+      if (navigator.mediaDevices && this.scanner) {
         this.scanner.setStopped(true);
         this.scanner.dispose();
       }
@@ -56,7 +56,6 @@ export default {
         this.scanner = new window.w69b.qr.ui.ContinuousScanner();
         this.scanner.setDecodedCallback(result => this.handleCapture({ result }));
         this.scanner.render(this.$refs.capture);
-        console.log(this.scanner);
       } else {
         console.log('Sorry, native web camera streaming (getUserMedia) is not supported by this browser...');
       }
