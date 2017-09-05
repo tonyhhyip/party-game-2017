@@ -21,12 +21,13 @@
         <v-icon>settings</v-icon>
         <v-icon>close</v-icon>
       </v-btn>
-      <add></add>
+      <v-btn secondary fab dark to="/admin/attendees/add">
+        <v-icon>add</v-icon>
+      </v-btn>
       <v-btn success fab dark @click="syncAttendee" :loading="syncing" :disabled="syncing">
         <v-icon>autorenew</v-icon>
       </v-btn>
     </v-speed-dial>
-    <!--<add></add>-->
   </v-layout>
 </template>
 

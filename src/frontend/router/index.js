@@ -11,6 +11,7 @@ export default function () {
     routes: [
       { path: '/admin', component: () => import('../pages/admin/Home.vue') },
       { path: '/admin/attendees', component: () => import('../pages/admin/attendees/list/Page.vue') },
+      { path: '/admin/attendees/add', component: () => import('../pages/admin/attendees/add/Page.vue') },
       { path: '/admin/attendees/:id', name: 'admin.attendees.show', component: () => import('../pages/admin/attendees/show/Page.vue') },
       { path: '/admin/booth', component: () => import('../pages/admin/booth/list/Page.vue') },
       { path: '/admin/booth/add', component: () => import('../pages/admin/booth/add/Page.vue') },

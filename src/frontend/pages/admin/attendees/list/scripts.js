@@ -3,11 +3,9 @@ import query from './query.graphql';
 import mutation from './sync.mutation.graphql';
 import List from './List.vue';
 import Search from './Search.vue';
-import Add from './add/Component.vue';
 
 export default {
   components: {
-    Add,
     List,
     Search,
     Scanner: () => import('../../../../components/scanner/Component.vue'),
