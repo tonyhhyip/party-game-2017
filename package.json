@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "SITCON x HK Booth Game System",
-  "main": "src/server.js",
+  "main": "src/backend/server.js",
   "repository": "git+https://github.com/sitcon-x-hk/party-game-2017.git",
   "license": "MIT",
   "scripts": {
