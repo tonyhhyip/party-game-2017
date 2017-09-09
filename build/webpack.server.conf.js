@@ -2,11 +2,15 @@ const merge = require('webpack-merge');
 const base = require('./webpack.base.conf');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const nodeExternals = require('webpack-node-externals');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = merge.smart(base, {
   entry: './src/frontend/serverEntry.js',
   plugins: [
     new VueSSRServerPlugin(),
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+    }),
   ],
   target: 'node',
   output: {
