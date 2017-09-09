@@ -4,14 +4,17 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const nodeExternals = require('webpack-node-externals');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const plugins = [new VueSSRServerPlugin()];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(new ExtractTextPlugin({
+    filename: '[name].[contenthash].css',
+  }));
+}
+
 module.exports = merge.smart(base, {
   entry: './src/frontend/serverEntry.js',
-  plugins: [
-    new VueSSRServerPlugin(),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-  ],
+  plugins,
   target: 'node',
   output: {
     libraryTarget: 'commonjs2',
