@@ -54,7 +54,7 @@ export default {
         update: (store, { data: { finishGame } }) => {
           const variables = { id: this.id };
           const data = store.readQuery({ query, variables });
-          data.attendees[0].checkIn = finishGame.finishGame;
+          data.attendees[0].finishGame = finishGame.finishGame;
           store.writeQuery({ query, variables, data });
         },
       })
