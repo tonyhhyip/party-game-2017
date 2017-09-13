@@ -7,7 +7,7 @@
         </v-flex>
       </v-layout>
       <scanner @capture="handleCapture" keepCapture></scanner>
-      <v-snackbar v-model="snackbar" top :timeout="50000000" :success="success" :error="!success">
+      <v-snackbar v-model="snackbar" top :timeout="5000" :success="success" :error="!success">
         {{ notice }}
         <v-btn @click="snackbar = false" flat class="white--text">Close</v-btn>
       </v-snackbar>
