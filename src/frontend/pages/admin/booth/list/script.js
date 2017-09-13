@@ -8,6 +8,7 @@ export default {
   apollo: {
     booths: {
       query,
+      fetchPolicy: 'cache-and-network',
     },
   },
   data() {
