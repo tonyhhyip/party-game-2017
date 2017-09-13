@@ -4,6 +4,7 @@ const RedisStore = require('connect-redis')(session);
 const axios = require('axios');
 const passport = require('passport');
 const { OAuth2Strategy } = require('passport-oauth');
+const { IS_PRODUCTION } = require('./config');
 
 const { OAUTH_HOST } = process.env;
 
@@ -75,23 +76,24 @@ function createAuthRouter() {
 }
 
 module.exports = app => new Promise((resolve) => {
-  app.use(session({
-    store: new RedisStore({
-      host: process.env.REDIS_HOST || 'localhost',
-      db: parseInt(process.env.REDIS_DB, 10),
-    }),
-    secret: process.env.SESSION_SECRET,
-    name: process.env.SESSION_NAME,
-    resave: false,
-    saveUninitialized: false,
-  }));
+  if (IS_PRODUCTION) {
+    app.use(session({
+      store: new RedisStore({
+        host: process.env.REDIS_HOST || 'localhost',
+        db: parseInt(process.env.REDIS_DB, 10),
+      }),
+      secret: process.env.SESSION_SECRET,
+      name: process.env.SESSION_NAME,
+      resave: false,
+      saveUninitialized: false,
+    }));
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
 
-  app.use('/auth', createAuthRouter());
+    app.use('/auth', createAuthRouter());
 
-  app.use('/admin', loginGuard);
-
+    app.use('/admin', loginGuard);
+  }
   resolve(app);
 });
