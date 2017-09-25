@@ -8,4 +8,4 @@ RUN yarn install && \
     yarn build && \
     yarn install --production
 
-CMD ["node", "src/backend/server.js"]
+CMD ["yarn", "start"]

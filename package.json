@@ -11,7 +11,8 @@
     "setup:frontend": "webpack --config build/webpack.dev.conf.js && rm -f dist/*.js",
     "setup:backend": "webpack --config build/webpack.server.conf.js",
     "dev": "nodemon --watch src/backend src/backend/server.js",
-    "build": "NODE_ENV=production node build/build.js"
+    "build": "NODE_ENV=production node build/build.js",
+    "start": "node src/backend/server.js"
   },
   "dependencies": {
     "apollo-client": "^1.9.2",
