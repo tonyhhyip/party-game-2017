@@ -4,7 +4,7 @@
     {{- meta | safe -}}
     {{- title | safe -}}
     {{- link | safe -}}
-    {%- for link in links -%}
+    {%- for link in styles -%}
         <link href="{{- link -}}" rel="stylesheet" type="text/css">
     {%- endfor  -%}
 </head>
