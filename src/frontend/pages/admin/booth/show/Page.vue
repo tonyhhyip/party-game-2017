@@ -11,11 +11,12 @@
         <v-flex xs12>
           <v-card>
             <v-card-title primary-title>
-              <div>
-                <h3 class="headline">{{ booth.name }}</h3>
-                <div>Token: {{ booth.token }}</div>
-              </div>
+              <h3 class="headline">{{ booth.name }}</h3>
             </v-card-title>
+            <v-card-text>
+              <p>Token: {{ booth.token }}</p>
+              <p>Link: {{ link }}</p>
+            </v-card-text>
           </v-card>
         </v-flex>
       </v-layout>
